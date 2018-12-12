@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>My Blogs Appication</title>
+    </head>
+
+    <body>
+
+        <header>
+            Title Bar
+        </header>
+        <nav>
+            <ul>
+            <li><a href="{{route('BlogController.getIndex')}}">Back</a></li>
+            </ul>
+        </nav>
+
+        <section id="main">
+        <form action="{{route('BlogController.postCreate')}}" method="POST">
+                {{csrfField()}}
+                Title : <br>
+                <input type="text" name="title" /><br/>
+                Content : <br>
+                <textarea name="content" id="" cols="30" rows="10"></textarea><br>
+                <button type="submit">Submit</button>
+
+
+          </form>
+
+        </section>
+
+       
+        
+    </body>
+</html>

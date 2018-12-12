@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>My Blogs Appication</title>
+
+        <style type="text/css">
+        .inline {
+            display: inline;
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+            Title Bar
+        </header>
+        <nav>
+            <ul>
+                <li><a href="{{route('BlogController.getCreate')}}">Create a Blog</a></li>
+            </ul>
+        </nav>
+
+        <section id="main">
+            @each(blog in blogs)
+               <div>
+                    <h1>{{blog.title}}</h1>
+                    <p>{{blog.content}}</p>
+
+                    <form class="inline" action="{{route('BlogController.postDelete')}}" method="POST">
+                        {{ csrfField() }}
+                        <input type="hidden" name="id" value="{{blog.id}}"/>
+                        <button type="submit">Delete</button>
+                    </form>
+
+                    <form class="inline" action="{{route('BlogController.postEdit')}}" method="GET">
+                        {{ csrfField() }}
+                        <input type="hidden" name="id" value="{{blog.id}}"/>
+                        <button type="submit">Edit</button>
+                    </form>
+                    <hr/>
+                </div> 
+            @endeach    
+
+        </section>
+
+       
+        
+    </body>
+</html>
